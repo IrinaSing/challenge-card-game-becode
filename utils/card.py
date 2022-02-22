@@ -12,7 +12,9 @@ class Symbol:
             raise ValueError("Such suit does not exist")
         self.color = color
 
-Cardesses = Symbol("red", "♥")
+print(Symbol("red", "♥"))
+
+
         
 
 class Cards(Symbol):  # <--- Inherits from Symbol
@@ -22,4 +24,13 @@ class Cards(Symbol):  # <--- Inherits from Symbol
     It inherits from the class symbol.
     """
     def __init__(self, color: str, icon: str, value: str):
-        pass
+        super().__init__(color, icon)       
+        values = ['A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K']
+        values = [word for line in values for word in line.split()]
+        # check if entered suit is among existing suits
+        if (value in values):
+            self.value = value
+        else:
+            raise ValueError("Such value does not exist")
+
+print(Cards("red", "♥", "K"))
