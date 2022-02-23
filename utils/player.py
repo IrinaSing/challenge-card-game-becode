@@ -55,20 +55,20 @@ class Deck:
         print("players in distr", self.players)
 
         # Distribute cards to players
-        for c in range (len(self.cards)):
-            if self.cards == 0:
-                break
-            else:
-                for player in self.players:    
-                    player.cards.append(self.cards[0])
-                    self.cards.pop(0)
-                    print(player.cards)      
+        
+        while len(self.cards) > 0:
+            for player in self.players:    
+                player.cards.append(self.cards[0])
+                self.cards.pop(0)
+                print(len(self.cards))
+                print(player.cards)
+                continue     
 
     
 
 deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"], Player.players)
 deck_1.fill_deck()
-print(deck_1.shuffle())
+deck_1.shuffle()
 print(deck_1.distribute())
 
 
