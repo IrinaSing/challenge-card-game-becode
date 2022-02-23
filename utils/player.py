@@ -5,6 +5,7 @@ import random
 from typing import List
 from card import Card
 class Player:
+
     players = []
     
     def __init__(self, name: str, cards: List[Card], turn_count: int, number_of_cards: int, history: List[Card]):
@@ -31,7 +32,7 @@ class Player:
 
 player1 = Player("Cecil", [], 0, 0, [])
 player2 = Player("Maria", [], 0, 0, [])
-print("players", Player.players)
+# print("players", Player.players)
 class Deck:
     def __init__(self, cards: List, icons: List[str], values: List[str], players: List):
         self.icons = icons
@@ -52,7 +53,6 @@ class Deck:
 
     
     def distribute(self):
-        print("players in distr", self.players)
 
         # Distribute cards to players
         
@@ -60,18 +60,19 @@ class Deck:
             for player in self.players:    
                 player.cards.append(self.cards[0])
                 self.cards.pop(0)
-                print(len(self.cards))
-                print(player.cards)
+                # print(len(self.cards))
+                # print(player.cards)
                 continue     
 
     
 
 deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"], Player.players)
-deck_1.fill_deck()
-deck_1.shuffle()
-deck_1.distribute()
+# deck_1.fill_deck()
+# deck_1.shuffle()
+# deck_1.distribute()
 
-print(player1.play())
+# print(player1.play())
+# print(player2.play())
 
 
 
