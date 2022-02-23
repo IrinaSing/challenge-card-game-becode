@@ -62,7 +62,7 @@ class Deck:
 
 deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"], Player.players)
 deck_1.fill_deck()
-deck_1.shuffle()
+print(deck_1.shuffle())
 print(deck_1.distribute())
 
 
