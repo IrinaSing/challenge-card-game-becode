@@ -7,30 +7,30 @@ from card import Card
 class Player:
     players = []
     
-    def __init__(self, cards: List[Card], turn_count: int, number_of_cards: int, history: List[Card]):
+    def __init__(self, name: str, cards: List[Card], turn_count: int, number_of_cards: int, history: List[Card]):
         
+        self.name = name
         self.cards = cards
         self.turn_count = 0
         self.number_of_cards = 0
         self.history = []
 
-        Player.players.append(self)
-        
-
-    """    
+        Player.players.append(self)        
+    
 
     def play(self):
-        Card = random.choice(self.cards)
-        print("Card:", Card)
-        self.history.append(Card)
-        print("{PLAYER_NAME} {TURN_COUNT} played: {CARD_NUMBER} {CARD_SYMBOL_ICON}.")
-        return Card
-"""
+        random_card = random.choice(self.cards)
+        self.history.append(random_card)
+        self.cards.remove(random_card)
+        self.turn_count += 1
+        print(f"{self.name} (turn {self.turn_count}) played: {random_card}. History: {self.history}. Cards left: {self.cards}")
+        return random_card
+    
 
 # create instances of players
 
-player1 = Player([], 0, 0, [])
-player2 = Player([], 0, 0, [])
+player1 = Player("Cecil", [], 0, 0, [])
+player2 = Player("Maria", [], 0, 0, [])
 print("players", Player.players)
 class Deck:
     def __init__(self, cards: List, icons: List[str], values: List[str], players: List):
@@ -69,7 +69,11 @@ class Deck:
 deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"], Player.players)
 deck_1.fill_deck()
 deck_1.shuffle()
-print(deck_1.distribute())
+deck_1.distribute()
+
+print(player1.play())
+
+
 
 
 
