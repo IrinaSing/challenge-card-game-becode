@@ -1,36 +1,49 @@
 # card
+import random
+from typing import List
 
 class Symbol:
     """Class representing symbol (suit)"""
 
-    def __init__(self, color: str, icon: str):        
-        suits = ["♥", "♦", "♣", "♠"]
+    def __init__(self, icon: str):
         # check if entered suit is among existing suits
-        if (icon in suits):
-            self.icon = icon
+        self.icon = icon
+        if icon == "♥" or "♦":            
+            self.color = "red"
+        elif icon == "♣" or "♠":
+            self.color = "black"
         else:
             raise ValueError("Such suit does not exist")
-        self.color = color
-
-print(Symbol("red", "♥"))
-
-
         
 
-class Cards(Symbol):  # <--- Inherits from Symbol
+class Card(Symbol):  # <--- Inherits from Symbol
     """
-    A class that defines a card.
+    A class that defines a card with combination of suit and value.
 
     It inherits from the class symbol.
     """
-    def __init__(self, color: str, icon: str, value: str):
-        super().__init__(color, icon)       
-        values = ['A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K']
-        values = [word for line in values for word in line.split()]
+    # class variable
+    values = ['A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K']
+    values = [word for line in values for word in line.split()]
+
+    def __init__(self, icon: str, value: str):
+        super().__init__(icon)
+        self.value = value      
+        
         # check if entered suit is among existing suits
-        if (value in values):
+
+    def check_value(self, value):
+        if (self.value in Card.values):
             self.value = value
         else:
             raise ValueError("Such value does not exist")
 
-print(Cards("red", "♥", "K"))
+    def create_card(self):
+        print(self.icon, self.value)
+
+
+
+      
+# check
+# card_1 = Card("♣", "K")
+# print(card_1.create_card())
