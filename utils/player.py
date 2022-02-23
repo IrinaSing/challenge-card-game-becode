@@ -54,8 +54,15 @@ class Deck:
     def distribute(self):
         print("players in distr", self.players)
 
-        for player in self.players:
-            print(player.cards)      
+        # Distribute cards to players
+        for c in range (len(self.cards)):
+            if self.cards == 0:
+                break
+            else:
+                for player in self.players:    
+                    player.cards.append(self.cards[0])
+                    self.cards.pop(0)
+                    print(player.cards)      
 
     
 
