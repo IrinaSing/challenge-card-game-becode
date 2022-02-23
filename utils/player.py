@@ -33,10 +33,11 @@ player1 = Player([], 0, 0, [])
 player2 = Player([], 0, 0, [])
 print("players", Player.players)
 class Deck:
-    def __init__(self, cards: List, icons: List[str], values: List[str]):
+    def __init__(self, cards: List, icons: List[str], values: List[str], players: List):
         self.icons = icons
         self.values = values
         self.cards = []
+        self.players = players
 
     def fill_deck(self):
         for i in range (0, len(self.values)):
@@ -51,20 +52,18 @@ class Deck:
 
     
     def distribute(self):
-        print("Player.players", Player.players)
-        players = Player.players
-        print("players in distr", players)
+        print("players in distr", self.players)
 
-        
+        for i in self.players:
+            print(self.players[i].cards)
+        # print(self.players[0].cards)        
 
-        # for player in players:
-            # player_cards = []
     
 
-deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"])
-print(deck_1.fill_deck())
-print(deck_1.shuffle())
-
+deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"], Player.players)
+deck_1.fill_deck()
+deck_1.shuffle()
+print(deck_1.distribute())
 
 
 
