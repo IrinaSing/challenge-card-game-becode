@@ -5,11 +5,17 @@ import random
 from typing import List
 from card import Card
 class Player:
+    players = []
+    
     def __init__(self, cards: List[Card], turn_count: int, number_of_cards: int, history: List[Card]):
+        
         self.cards = cards
         self.turn_count = 0
         self.number_of_cards = 0
         self.history = []
+
+        Player.players.append(self)
+        
 
     """    
 
@@ -21,6 +27,11 @@ class Player:
         return Card
 """
 
+# create instances of players
+
+player1 = Player([], 0, 0, [])
+player2 = Player([], 0, 0, [])
+print("players", Player.players)
 class Deck:
     def __init__(self, cards: List, icons: List[str], values: List[str]):
         self.icons = icons
@@ -38,20 +49,25 @@ class Deck:
         random.shuffle(self.cards)
         return self.cards
 
-    """
-    def distribute(self, players: List[Player]):
-        players = Player.instances
-        for player in players:
-            player_cards = []
-    """
+    
+    def distribute(self):
+        print("Player.players", Player.players)
+        players = Player.players
+        print("players in distr", players)
+
+        
+
+        # for player in players:
+            # player_cards = []
+    
 
 deck_1 = Deck([],["♥", "♦", "♣", "♠"], ['A', "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"])
 print(deck_1.fill_deck())
 print(deck_1.shuffle())
 
-# create instances of players
-player1 = Player([], 0, 0, [])
-player2 = Player([], 0, 0, [])
+
+
+
 
         
   
